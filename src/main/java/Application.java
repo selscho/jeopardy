@@ -19,9 +19,9 @@ public class Application implements ActionListener {
 
         views.add(tableOfCategories, TABLE_OF_CATEGORIES);
         views.add(question, QUESTION);
-
         frame.add(views);
 
+        // create table of categories layout
         int numberOfCategories = 6;
         tableOfCategories.setLayout(new GridLayout(0, numberOfCategories));
 
@@ -69,6 +69,11 @@ public class Application implements ActionListener {
         tableOfCategories.add(new JButton("1000"));
         tableOfCategories.add(new JButton("1000"));
         tableOfCategories.add(new JButton("1000"));
+
+        // create question layout
+        JButton nextButton = new JButton("Weiter");
+        nextButton.addActionListener(actionEvent -> cardLayout.show(views, TABLE_OF_CATEGORIES));
+        question.add(nextButton);
 
         frame.setVisible(true);
     }
