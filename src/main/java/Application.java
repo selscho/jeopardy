@@ -75,14 +75,26 @@ public class Application implements ActionListener {
         tableOfCategoriesGrid.add(new JButton("1000"));
 
         JPanel pointBarPanel = new JPanel();
-        int pointsTeam1 = 0;
-        int pointsTeam2 = 0;
+        String pointsTeam1 = "0";
+        String pointsTeam2 = "0";
         pointBarPanel.setLayout(new BoxLayout(pointBarPanel, BoxLayout.X_AXIS));
-        pointBarPanel.add(new JButton("Huhu"));
-        //pointBarPanel.add(new JTextField("Team 1: "));
-        //pointBarPanel.add(new JTextField(pointsTeam1));
-        //pointBarPanel.add(new JTextField("Team 2: "));
-        //pointBarPanel.add(new JTextField(pointsTeam2));
+
+        var team1 = new JTextField("Team 1:");
+        team1.setMaximumSize(team1.getPreferredSize());
+        pointBarPanel.add(team1);
+
+        var pointsTeam1Field = new JTextField(pointsTeam1);
+        pointsTeam1Field.setMaximumSize(pointsTeam1Field.getPreferredSize());
+        pointBarPanel.add(pointsTeam1Field);
+
+        var team2 = new JTextField("Team 2:");
+        team2.setMaximumSize(team2.getPreferredSize());
+        pointBarPanel.add(team2);
+
+        var pointsTeam2Field = new JTextField(pointsTeam2);
+        pointsTeam2Field.setMaximumSize(pointsTeam2Field.getPreferredSize());
+        pointBarPanel.add(pointsTeam2Field);
+
         tableOfCategoriesPanel.add(pointBarPanel);
 
         // create question panel layout
