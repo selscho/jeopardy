@@ -22,54 +22,68 @@ public class Application implements ActionListener {
         frame.add(views);
 
         // create table of categories layout
+        tableOfCategoriesPanel.setLayout(new BoxLayout(tableOfCategoriesPanel, BoxLayout.Y_AXIS));
 
+        JPanel tableOfCategoriesGrid = new JPanel();
         int numberOfCategories = 6;
-        tableOfCategoriesPanel.setLayout(new GridLayout(0, numberOfCategories));
+        tableOfCategoriesGrid.setLayout(new GridLayout(0, numberOfCategories));
+        tableOfCategoriesPanel.add(tableOfCategoriesGrid);
 
-        tableOfCategoriesPanel.add(new JLabel("Category 1"));
-        tableOfCategoriesPanel.add(new JLabel("Category 2"));
-        tableOfCategoriesPanel.add(new JLabel("Category 3"));
-        tableOfCategoriesPanel.add(new JLabel("Category 4"));
-        tableOfCategoriesPanel.add(new JLabel("Category 5"));
-        tableOfCategoriesPanel.add(new JLabel("Category 6"));
+        tableOfCategoriesGrid.add(new JLabel("Category 1"));
+        tableOfCategoriesGrid.add(new JLabel("Category 2"));
+        tableOfCategoriesGrid.add(new JLabel("Category 3"));
+        tableOfCategoriesGrid.add(new JLabel("Category 4"));
+        tableOfCategoriesGrid.add(new JLabel("Category 5"));
+        tableOfCategoriesGrid.add(new JLabel("Category 6"));
 
         JButton b11 = new JButton("200");
         b11.addActionListener(this);
-        tableOfCategoriesPanel.add(b11);
+        tableOfCategoriesGrid.add(b11);
 
-        tableOfCategoriesPanel.add(new JButton("200"));
-        tableOfCategoriesPanel.add(new JButton("200"));
-        tableOfCategoriesPanel.add(new JButton("200"));
-        tableOfCategoriesPanel.add(new JButton("200"));
-        tableOfCategoriesPanel.add(new JButton("200"));
+        tableOfCategoriesGrid.add(new JButton("200"));
+        tableOfCategoriesGrid.add(new JButton("200"));
+        tableOfCategoriesGrid.add(new JButton("200"));
+        tableOfCategoriesGrid.add(new JButton("200"));
+        tableOfCategoriesGrid.add(new JButton("200"));
 
-        tableOfCategoriesPanel.add(new JButton("400"));
-        tableOfCategoriesPanel.add(new JButton("400"));
-        tableOfCategoriesPanel.add(new JButton("400"));
-        tableOfCategoriesPanel.add(new JButton("400"));
-        tableOfCategoriesPanel.add(new JButton("400"));
-        tableOfCategoriesPanel.add(new JButton("400"));
+        tableOfCategoriesGrid.add(new JButton("400"));
+        tableOfCategoriesGrid.add(new JButton("400"));
+        tableOfCategoriesGrid.add(new JButton("400"));
+        tableOfCategoriesGrid.add(new JButton("400"));
+        tableOfCategoriesGrid.add(new JButton("400"));
+        tableOfCategoriesGrid.add(new JButton("400"));
 
-        tableOfCategoriesPanel.add(new JButton("600"));
-        tableOfCategoriesPanel.add(new JButton("600"));
-        tableOfCategoriesPanel.add(new JButton("600"));
-        tableOfCategoriesPanel.add(new JButton("600"));
-        tableOfCategoriesPanel.add(new JButton("600"));
-        tableOfCategoriesPanel.add(new JButton("600"));
+        tableOfCategoriesGrid.add(new JButton("600"));
+        tableOfCategoriesGrid.add(new JButton("600"));
+        tableOfCategoriesGrid.add(new JButton("600"));
+        tableOfCategoriesGrid.add(new JButton("600"));
+        tableOfCategoriesGrid.add(new JButton("600"));
+        tableOfCategoriesGrid.add(new JButton("600"));
 
-        tableOfCategoriesPanel.add(new JButton("800"));
-        tableOfCategoriesPanel.add(new JButton("800"));
-        tableOfCategoriesPanel.add(new JButton("800"));
-        tableOfCategoriesPanel.add(new JButton("800"));
-        tableOfCategoriesPanel.add(new JButton("800"));
-        tableOfCategoriesPanel.add(new JButton("800"));
+        tableOfCategoriesGrid.add(new JButton("800"));
+        tableOfCategoriesGrid.add(new JButton("800"));
+        tableOfCategoriesGrid.add(new JButton("800"));
+        tableOfCategoriesGrid.add(new JButton("800"));
+        tableOfCategoriesGrid.add(new JButton("800"));
+        tableOfCategoriesGrid.add(new JButton("800"));
 
-        tableOfCategoriesPanel.add(new JButton("1000"));
-        tableOfCategoriesPanel.add(new JButton("1000"));
-        tableOfCategoriesPanel.add(new JButton("1000"));
-        tableOfCategoriesPanel.add(new JButton("1000"));
-        tableOfCategoriesPanel.add(new JButton("1000"));
-        tableOfCategoriesPanel.add(new JButton("1000"));
+        tableOfCategoriesGrid.add(new JButton("1000"));
+        tableOfCategoriesGrid.add(new JButton("1000"));
+        tableOfCategoriesGrid.add(new JButton("1000"));
+        tableOfCategoriesGrid.add(new JButton("1000"));
+        tableOfCategoriesGrid.add(new JButton("1000"));
+        tableOfCategoriesGrid.add(new JButton("1000"));
+
+        JPanel pointBarPanel = new JPanel();
+        int pointsTeam1 = 0;
+        int pointsTeam2 = 0;
+        pointBarPanel.setLayout(new BoxLayout(pointBarPanel, BoxLayout.X_AXIS));
+        pointBarPanel.add(new JButton("Huhu"));
+        //pointBarPanel.add(new JTextField("Team 1: "));
+        //pointBarPanel.add(new JTextField(pointsTeam1));
+        //pointBarPanel.add(new JTextField("Team 2: "));
+        //pointBarPanel.add(new JTextField(pointsTeam2));
+        tableOfCategoriesPanel.add(pointBarPanel);
 
         // create question panel layout
         questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
