@@ -94,14 +94,7 @@ public class Application implements ActionListener {
 //        gridBagLayout.setConstraints(questionArea, questionAreaConstraints);
 //        questionPanel.add(questionArea, questionAreaConstraints);
 
-        questionPanel.setLayout(new GridBagLayout());
-
-        GridBagConstraints c1 = new GridBagConstraints();
-        GridBagConstraints c2 = new GridBagConstraints();
-        GridBagConstraints c3 = new GridBagConstraints();
-        GridBagConstraints c4 = new GridBagConstraints();
-        GridBagConstraints c5 = new GridBagConstraints();
-
+        questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
 
         JTextArea questionArea = new JTextArea("Hier steht eine Frage. Eine suuuuper lange Frage: Wie war das nochmal? " +
                 "Wie soll ich nur anfangen? Niemals anfangen aufzuhören, aber wie, wenn ich wünschte, es wäre zu Ende? " +
@@ -110,45 +103,84 @@ public class Application implements ActionListener {
                 "wir eine kleine Reise in die Vergangenheit unternehmen. Wobei sich hier schon wieder die Frage stellt:" +
                 " „Was ist Vergangenheit überhaupt?“");
         questionArea.setLineWrap(true);
-        c4.fill = GridBagConstraints.HORIZONTAL;
-        c4.ipady = 40;      //make this component tall
-        c4.weightx = 0.0;
-        c4.gridwidth = 3;
-        c4.gridx = 0;
-        c4.gridy = 1;
-        questionPanel.add(questionArea, c4);
+        questionPanel.add(questionArea);
 
-        JButton button1 = new JButton("Button 1");
-        c1.weightx = 0.5;
-        c1.fill = GridBagConstraints.HORIZONTAL;
-        c1.gridx = 0;
-        c1.gridy = 0;
-        questionPanel.add(button1, c1);
+        JPanel teamButtons = new JPanel();
+        JButton team1Button = new JButton("Team 1");
+        JButton team2Button = new JButton("Team 2");
+        teamButtons.setLayout(new BoxLayout(teamButtons, BoxLayout.X_AXIS));
+        teamButtons.add(team1Button);
+        teamButtons.add(team2Button);
+        questionPanel.add(teamButtons);
 
-        JButton button2 = new JButton("Button 2");
-        c2.fill = GridBagConstraints.HORIZONTAL;
-        c2.weightx = 0.5;
-        c2.gridx = 1;
-        c2.gridy = 0;
-        questionPanel.add(button2, c2);
+        JButton readyButton = new JButton("Fertig");
+        questionPanel.add(readyButton);
 
-        JButton button3 = new JButton("Button 3");
-        c3.fill = GridBagConstraints.HORIZONTAL;
-        c3.weightx = 0.5;
-        c3.gridx = 2;
-        c3.gridy = 0;
-        questionPanel.add(button3, c3);
-
-        JButton button5 = new JButton("5");
-        c5.fill = GridBagConstraints.HORIZONTAL;
-        c5.ipady = 0;       //reset to default
-        c5.weighty = 1.0;   //request any extra vertical space
-        c5.anchor = GridBagConstraints.PAGE_END; //bottom of space
-        c5.insets = new Insets(10, 0, 0, 0);  //top padding
-        c5.gridx = 1;       //aligned with button 2
-        c5.gridwidth = 2;   //2 columns wide
-        c5.gridy = 2;       //third row
-        questionPanel.add(button5, c5);
+//        GridBagConstraints c0 = new GridBagConstraints();
+//        GridBagConstraints c1 = new GridBagConstraints();
+//        GridBagConstraints c2 = new GridBagConstraints();
+//        GridBagConstraints c3 = new GridBagConstraints();
+//        GridBagConstraints c4 = new GridBagConstraints();
+//        GridBagConstraints c5 = new GridBagConstraints();
+//
+////        JTextArea emptyArea = new JTextArea("    ");
+////        c0.gridx = 0;
+////        c0.gridy = 0;
+////        c0.gridwidth = 1;
+////        c0.weightx = 0.5;
+////        c0.fill = GridBagConstraints.HORIZONTAL;
+////        questionPanel.add(emptyArea, c0);
+//
+//
+//        JTextArea questionArea = new JTextArea("Hier steht eine Frage. Eine suuuuper lange Frage: Wie war das nochmal? " +
+//                "Wie soll ich nur anfangen? Niemals anfangen aufzuhören, aber wie, wenn ich wünschte, es wäre zu Ende? " +
+//                "Und was ist „es“ überhaupt? Wie soll ich das erklären, ohne von allen, nun ja, sagen wir, " +
+//                "als „verrückt“ oder „geisteskrank“ abgestempelt zu werden… Ich werde es versuchen, aber dazu müssen " +
+//                "wir eine kleine Reise in die Vergangenheit unternehmen. Wobei sich hier schon wieder die Frage stellt:" +
+//                " „Was ist Vergangenheit überhaupt?“");
+//        questionArea.setLineWrap(true);
+//        c4.fill = GridBagConstraints.HORIZONTAL;
+//        c4.anchor = GridBagConstraints.CENTER;
+//        //c4.ipadx = 80;
+//        //c4.ipady = 40;      //make this component tall
+//        c4.weightx = 0.6;
+//        c4.gridwidth = 3;
+//        c4.gridx = 1;
+//        c4.gridy = 0;
+//        questionPanel.add(questionArea, c4);
+//
+////        JButton button1 = new JButton("Button 1");
+////        c1.weightx = 0.5;
+////        c1.fill = GridBagConstraints.HORIZONTAL;
+////        c1.gridx = 0;
+////        c1.gridy = 1;
+////        questionPanel.add(button1, c1);
+//
+//        JButton button2 = new JButton("Button 2");
+//        c2.fill = GridBagConstraints.HORIZONTAL;
+//        c2.weightx = 0.5;
+//        c2.gridx = 1;
+//        c2.gridy = 1;
+//        questionPanel.add(button2, c2);
+//
+//        JButton button3 = new JButton("Button 3");
+//        c3.fill = GridBagConstraints.HORIZONTAL;
+//        c3.weightx = 0.5;
+//        c3.gridx = 3;
+//        c3.gridy = 1;
+//        questionPanel.add(button3, c3);
+//
+//        JButton button5 = new JButton("Fertig");
+//        c5.fill = GridBagConstraints.HORIZONTAL;
+//        //c5.ipady = 0;       //reset to default
+//        c5.weightx = 0.2;
+//        c5.weighty = 1.0;   //request any extra vertical space
+//        c5.anchor = GridBagConstraints.PAGE_END; //bottom of space
+//        //c5.insets = new Insets(10, 0, 0, 0);  //top padding
+//        c5.gridx = 4;       //aligned with button 2
+//        c5.gridwidth = 1;   //2 columns wide
+//        c5.gridy = 2;       //third row
+//        questionPanel.add(button5, c5);
 
 
         //JButton nextButton = new JButton("Weiter");
