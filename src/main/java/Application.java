@@ -12,8 +12,10 @@ public class Application implements ActionListener {
     final static int question11Score = 200;
     final static int question21Score = 400;
 
-    int pointsTeam1 = 0;
-    int pointsTeam2 = 0;
+    private int pointsTeam1 = 0;
+    private int pointsTeam2 = 0;
+    JTextField pointsTeam1Field = new JTextField(String.valueOf(pointsTeam1));
+    JTextField pointsTeam2Field = new JTextField(String.valueOf(pointsTeam2));
 
     public void run() {
         JFrame frame = new JFrame();
@@ -95,7 +97,7 @@ public class Application implements ActionListener {
         team1.setMaximumSize(team1.getPreferredSize());
         pointBarPanel.add(team1);
 
-        var pointsTeam1Field = new JTextField(String.valueOf(pointsTeam1));
+        //var pointsTeam1Field = new JTextField(String.valueOf(pointsTeam1));
         pointsTeam1Field.setMaximumSize(pointsTeam1Field.getPreferredSize());
         pointBarPanel.add(pointsTeam1Field);
 
@@ -103,7 +105,7 @@ public class Application implements ActionListener {
         team2.setMaximumSize(team2.getPreferredSize());
         pointBarPanel.add(team2);
 
-        var pointsTeam2Field = new JTextField(String.valueOf(pointsTeam2));
+        //var pointsTeam2Field = new JTextField(String.valueOf(pointsTeam2));
         pointsTeam2Field.setMaximumSize(pointsTeam2Field.getPreferredSize());
         pointBarPanel.add(pointsTeam2Field);
 
@@ -162,6 +164,22 @@ public class Application implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         // TODO: cardlayout, um frage-fenster über grid legen zu können
         cardLayout.show(views, QUESTION);
+    }
+
+    public void setPointsTeam1(int pointsTeam1) {
+        this.pointsTeam1 = pointsTeam1;
+    }
+
+    public void setPointsTeam2(int pointsTeam2) {
+        this.pointsTeam2 = pointsTeam2;
+    }
+
+    public int getPointsTeam1() {
+        return pointsTeam1;
+    }
+
+    public int getPointsTeam2() {
+        return pointsTeam2;
     }
 
 }
