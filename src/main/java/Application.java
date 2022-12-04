@@ -9,6 +9,12 @@ public class Application implements ActionListener {
     final static String TABLE_OF_CATEGORIES = "table of categories";
     final static String QUESTION = "question";
 
+    final static int question11Score = 200;
+    final static int question21Score = 400;
+
+    int pointsTeam1 = 0;
+    int pointsTeam2 = 0;
+
     public void run() {
         JFrame frame = new JFrame();
         frame.setSize(800, 600);
@@ -46,7 +52,15 @@ public class Application implements ActionListener {
         tableOfCategoriesGrid.add(new JButton("200"));
         tableOfCategoriesGrid.add(new JButton("200"));
 
-        tableOfCategoriesGrid.add(new JButton("400"));
+        JButton b21 = new JButton("400");
+        b21.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+        tableOfCategoriesGrid.add(b21);
+
         tableOfCategoriesGrid.add(new JButton("400"));
         tableOfCategoriesGrid.add(new JButton("400"));
         tableOfCategoriesGrid.add(new JButton("400"));
@@ -75,15 +89,13 @@ public class Application implements ActionListener {
         tableOfCategoriesGrid.add(new JButton("1000"));
 
         JPanel pointBarPanel = new JPanel();
-        String pointsTeam1 = "0";
-        String pointsTeam2 = "0";
         pointBarPanel.setLayout(new BoxLayout(pointBarPanel, BoxLayout.X_AXIS));
 
         var team1 = new JTextField("Team 1:");
         team1.setMaximumSize(team1.getPreferredSize());
         pointBarPanel.add(team1);
 
-        var pointsTeam1Field = new JTextField(pointsTeam1);
+        var pointsTeam1Field = new JTextField(String.valueOf(pointsTeam1));
         pointsTeam1Field.setMaximumSize(pointsTeam1Field.getPreferredSize());
         pointBarPanel.add(pointsTeam1Field);
 
@@ -91,7 +103,7 @@ public class Application implements ActionListener {
         team2.setMaximumSize(team2.getPreferredSize());
         pointBarPanel.add(team2);
 
-        var pointsTeam2Field = new JTextField(pointsTeam2);
+        var pointsTeam2Field = new JTextField(String.valueOf(pointsTeam2));
         pointsTeam2Field.setMaximumSize(pointsTeam2Field.getPreferredSize());
         pointBarPanel.add(pointsTeam2Field);
 
@@ -113,8 +125,9 @@ public class Application implements ActionListener {
 
         JPanel teamButtonsPanel = new JPanel();
         teamButtonsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        JButton team1Button = new JButton("Team 1");
-        JButton team2Button = new JButton("Team 2");
+        var team1Button = new JRadioButton("Team 1");
+        // TODO: create a ButtonGroup object, so that only team1 or team2 can be selected
+        var team2Button = new JRadioButton("Team 2");
         teamButtonsPanel.setLayout(new BoxLayout(teamButtonsPanel, BoxLayout.X_AXIS));
         teamButtonsPanel.add(team1Button);
         teamButtonsPanel.add(team2Button);
@@ -125,7 +138,19 @@ public class Application implements ActionListener {
         readyButtonPanel.setLayout(new BoxLayout(readyButtonPanel, BoxLayout.X_AXIS));
         JButton readyButton = new JButton("Fertig");
         readyButtonPanel.add(readyButton);
-        readyButton.addActionListener(actionEvent -> cardLayout.show(views, TABLE_OF_CATEGORIES));
+        readyButton.addActionListener(actionEvent -> {
+            if (team1Button.isSelected()) {
+                pointsTeam1 += question11Score;
+                pointsTeam1Field.setText(String.valueOf(pointsTeam1));
+                pointsTeam1Field.setMaximumSize(pointsTeam1Field.getPreferredSize());
+            }
+            if (team2Button.isSelected()) {
+                pointsTeam2 += question11Score;
+                pointsTeam2Field.setText(String.valueOf(pointsTeam2));
+                pointsTeam2Field.setMaximumSize(pointsTeam2Field.getPreferredSize());
+            }
+            cardLayout.show(views, TABLE_OF_CATEGORIES);
+        });
         questionPanel.add(readyButtonPanel);
 
 
