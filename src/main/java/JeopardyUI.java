@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class JeopardyUI {
     JFrame frame = new JFrame();
@@ -21,7 +23,10 @@ public class JeopardyUI {
 //    JTextField scoreTeam1Field = new JTextField(String.valueOf(pointsTeam1));
 //    JTextField scoreTeam2Field = new JTextField(String.valueOf(pointsTeam2));
 
-    JeopardyUI(){
+    JeopardyUIListener jeopardyUIListener;
+
+    JeopardyUI(JeopardyUIListener jeopardyUIListener){
+        this.jeopardyUIListener = jeopardyUIListener;
         //JFrame frame = new JFrame();
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +38,7 @@ public class JeopardyUI {
         views.add(questionPanel, QUESTION);
         frame.add(views);
 
-        //frame.setVisible(true);
+        frame.setVisible(true);
     }
 
     private void createOverview(){
@@ -54,7 +59,12 @@ public class JeopardyUI {
         tableOfCategoriesGrid.add(new JLabel("Category 6"));
 
         JButton b11 = new JButton("200");
-//        b11.addActionListener(this);
+        b11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                jeopardyUIListener.onOverviewButtonClicked(0, 0);
+            }
+        });
         tableOfCategoriesGrid.add(b11);
 
         tableOfCategoriesGrid.add(new JButton("200"));
@@ -121,7 +131,7 @@ public class JeopardyUI {
 
         tableOfCategoriesPanel.add(scoreBarPanel);
 
-        frame.setVisible(true);
+        //frame.setVisible(true);
     }
 
     // TODO: ohne Argument: Platzhalter einfügen
@@ -154,6 +164,12 @@ public class JeopardyUI {
         readyButtonPanel.setLayout(new BoxLayout(readyButtonPanel, BoxLayout.X_AXIS));
         JButton readyButton = new JButton("Fertig");
         readyButtonPanel.add(readyButton);
+        readyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                jeopardyUIListener.onQuestionCompletedClicked();
+            }
+        });
 //        readyButton.addActionListener(actionEvent -> {
 //            if (team1Button.isSelected()) {
 //                pointsTeam1 += jeopardyQuestion.getQuestionScore();
@@ -169,6 +185,14 @@ public class JeopardyUI {
 //        });
         questionPanel.add(readyButtonPanel);
 
-        frame.setVisible(true);
+        //frame.setVisible(true);
+    }
+
+    public void showOverview() {
+        cardLayout.show(views, TABLE_OF_CATEGORIES);
+    }
+
+    public void showQuestion() {
+        cardLayout.show(views, QUESTION);
     }
 }

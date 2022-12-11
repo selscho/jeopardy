@@ -1,8 +1,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Application implements ActionListener, JeopardyUIListener {
-    JeopardyUI jeopardyUI = new JeopardyUI();
+public class Application implements JeopardyUIListener {
+    JeopardyUI jeopardyUI = new JeopardyUI(this);
+
 //    CardLayout cardLayout = new CardLayout();
 //    JPanel views = new JPanel(cardLayout);
 //    final static String TABLE_OF_CATEGORIES = "table of categories";
@@ -17,7 +18,9 @@ public class Application implements ActionListener, JeopardyUIListener {
 //    JTextField pointsTeam2Field = new JTextField(String.valueOf(pointsTeam2));
 
     public void run() {
-        //jeopardyUI.createOverview();
+        jeopardyUI.showOverview();
+
+
 //        JFrame frame = new JFrame();
 //        frame.setSize(800, 600);
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -159,12 +162,23 @@ public class Application implements ActionListener, JeopardyUIListener {
 //        frame.setVisible(true);
     }
 
+    @Override
+    public void onOverviewButtonClicked(int x, int y) {
+        jeopardyUI.showQuestion();
+    }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        // TODO: cardlayout, um frage-fenster über grid legen zu können
-//        cardLayout.show(views, QUESTION);
+    public void onQuestionCompletedClicked() {
+        // TODO: score aktualisieren und layout der scores aktualisieren
+        jeopardyUI.showOverview();
     }
+
+
+//    @Override
+//    public void actionPerformed(ActionEvent actionEvent) {
+//        // TODO: cardlayout, um frage-fenster über grid legen zu können
+//        cardLayout.show(views, QUESTION);
+//    }
 
 //    public void setPointsTeam1(int pointsTeam1) {
 //        this.pointsTeam1 = pointsTeam1;
