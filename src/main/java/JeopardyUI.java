@@ -58,56 +58,40 @@ public class JeopardyUI {
         tableOfCategoriesGrid.add(new JLabel("Category 5"));
         tableOfCategoriesGrid.add(new JLabel("Category 6"));
 
-        JButton b11 = new JButton("200");
-        b11.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                jeopardyUIListener.onOverviewButtonClicked(0, 0);
-            }
-        });
-        tableOfCategoriesGrid.add(b11);
+        tableOfCategoriesGrid.add(createButton(0, 0, "200"));
+        tableOfCategoriesGrid.add(createButton(1, 0, "200"));
+        tableOfCategoriesGrid.add(createButton(2, 0, "200"));
+        tableOfCategoriesGrid.add(createButton(3, 0, "200"));
+        tableOfCategoriesGrid.add(createButton(4, 0, "200"));
+        tableOfCategoriesGrid.add(createButton(5, 0, "200"));
 
-        tableOfCategoriesGrid.add(new JButton("200"));
-        tableOfCategoriesGrid.add(new JButton("200"));
-        tableOfCategoriesGrid.add(new JButton("200"));
-        tableOfCategoriesGrid.add(new JButton("200"));
-        tableOfCategoriesGrid.add(new JButton("200"));
+        tableOfCategoriesGrid.add(createButton(0, 1, "400"));
+        tableOfCategoriesGrid.add(createButton(1, 1, "400"));
+        tableOfCategoriesGrid.add(createButton(2, 1, "400"));
+        tableOfCategoriesGrid.add(createButton(3, 1, "400"));
+        tableOfCategoriesGrid.add(createButton(4, 1, "400"));
+        tableOfCategoriesGrid.add(createButton(5, 1, "400"));
 
-        JButton b21 = new JButton("400");
-//        b21.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent actionEvent) {
-//
-//            }
-//        });
-        tableOfCategoriesGrid.add(b21);
+        tableOfCategoriesGrid.add(createButton(0, 2, "600"));
+        tableOfCategoriesGrid.add(createButton(1, 2, "600"));
+        tableOfCategoriesGrid.add(createButton(2, 2, "600"));
+        tableOfCategoriesGrid.add(createButton(3, 2, "600"));
+        tableOfCategoriesGrid.add(createButton(4, 2, "600"));
+        tableOfCategoriesGrid.add(createButton(5, 2, "600"));
 
-        tableOfCategoriesGrid.add(new JButton("400"));
-        tableOfCategoriesGrid.add(new JButton("400"));
-        tableOfCategoriesGrid.add(new JButton("400"));
-        tableOfCategoriesGrid.add(new JButton("400"));
-        tableOfCategoriesGrid.add(new JButton("400"));
+        tableOfCategoriesGrid.add(createButton(0, 3, "800"));
+        tableOfCategoriesGrid.add(createButton(1, 3, "800"));
+        tableOfCategoriesGrid.add(createButton(2, 3, "800"));
+        tableOfCategoriesGrid.add(createButton(3, 3, "800"));
+        tableOfCategoriesGrid.add(createButton(4, 3, "800"));
+        tableOfCategoriesGrid.add(createButton(5, 3, "800"));
 
-        tableOfCategoriesGrid.add(new JButton("600"));
-        tableOfCategoriesGrid.add(new JButton("600"));
-        tableOfCategoriesGrid.add(new JButton("600"));
-        tableOfCategoriesGrid.add(new JButton("600"));
-        tableOfCategoriesGrid.add(new JButton("600"));
-        tableOfCategoriesGrid.add(new JButton("600"));
-
-        tableOfCategoriesGrid.add(new JButton("800"));
-        tableOfCategoriesGrid.add(new JButton("800"));
-        tableOfCategoriesGrid.add(new JButton("800"));
-        tableOfCategoriesGrid.add(new JButton("800"));
-        tableOfCategoriesGrid.add(new JButton("800"));
-        tableOfCategoriesGrid.add(new JButton("800"));
-
-        tableOfCategoriesGrid.add(new JButton("1000"));
-        tableOfCategoriesGrid.add(new JButton("1000"));
-        tableOfCategoriesGrid.add(new JButton("1000"));
-        tableOfCategoriesGrid.add(new JButton("1000"));
-        tableOfCategoriesGrid.add(new JButton("1000"));
-        tableOfCategoriesGrid.add(new JButton("1000"));
+        tableOfCategoriesGrid.add(createButton(0, 4, "1000"));
+        tableOfCategoriesGrid.add(createButton(1, 4, "1000"));
+        tableOfCategoriesGrid.add(createButton(2, 4, "1000"));
+        tableOfCategoriesGrid.add(createButton(3, 4, "1000"));
+        tableOfCategoriesGrid.add(createButton(4, 4, "1000"));
+        tableOfCategoriesGrid.add(createButton(5, 4, "1000"));
 
         // create score bar
         JPanel scoreBarPanel = new JPanel();
@@ -194,5 +178,17 @@ public class JeopardyUI {
 
     public void showQuestion() {
         cardLayout.show(views, QUESTION);
+    }
+
+    private JButton createButton(int x, int y, String score) {
+        JButton button = new JButton(score);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                jeopardyUIListener.onOverviewButtonClicked(x, y);
+            }
+        });
+
+        return button;
     }
 }
