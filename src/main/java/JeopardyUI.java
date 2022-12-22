@@ -8,14 +8,18 @@ public class JeopardyUI {
     CardLayout cardLayout = new CardLayout();
     JPanel views = new JPanel(cardLayout);
     JPanel tableOfCategoriesPanel = new JPanel();
+    JPanel tableOfCategoriesGrid = new JPanel();
+    int numberOfCategories = 6;
     JPanel questionPanel = new JPanel();
     private JTextArea questionArea = new JTextArea("");
+    private JeopardyQuestion activeQuestion = new JeopardyQuestion("?", 0);
+    //private JButton readyButton = new JButton("Fertig");
     final static String TABLE_OF_CATEGORIES = "table of categories";
     final static String QUESTION = "question";
 
     // TODO: methode, die scores rein schreibt und die JTextField-Groesse aktualisiert
-    JTextField scoreTeam1Field = new JTextField();
-    JTextField scoreTeam2Field = new JTextField();
+    JTextField scoreTeam1Field = new JTextField("0");
+    JTextField scoreTeam2Field = new JTextField("0");
 //    JTextField scoreTeam1Field = new JTextField(String.valueOf(pointsTeam1));
 //    JTextField scoreTeam2Field = new JTextField(String.valueOf(pointsTeam2));
 
@@ -42,8 +46,7 @@ public class JeopardyUI {
         tableOfCategoriesPanel.setLayout(new BoxLayout(tableOfCategoriesPanel, BoxLayout.Y_AXIS));
 
         // create grid with categories and question-scores
-        JPanel tableOfCategoriesGrid = new JPanel();
-        int numberOfCategories = 6;
+        //JPanel tableOfCategoriesGrid = new JPanel();
         tableOfCategoriesGrid.setLayout(new GridLayout(0, numberOfCategories));
         tableOfCategoriesPanel.add(tableOfCategoriesGrid);
 
@@ -144,7 +147,13 @@ public class JeopardyUI {
         readyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                jeopardyUIListener.onQuestionCompletedClicked();
+                int team = 0;
+                if (team1Button.isSelected()) {
+                    team = 1;
+                } else if (team2Button.isSelected()) {
+                    team = 2;
+                }
+                jeopardyUIListener.onQuestionCompletedClicked(activeQuestion, team);
             }
         });
 
@@ -158,6 +167,20 @@ public class JeopardyUI {
     public void showQuestion(JeopardyQuestion jeopardyQuestion) {
         cardLayout.show(views, QUESTION);
         questionArea.setText(jeopardyQuestion.getQuestion());
+        activeQuestion = jeopardyQuestion;
+    }
+
+    public void updateScore(int scoreTeam1, int scoreTeam2){
+        scoreTeam1Field.setText(String.valueOf(scoreTeam1));
+        scoreTeam1Field.setMaximumSize(scoreTeam1Field.getPreferredSize());
+
+        scoreTeam2Field.setText(String.valueOf(scoreTeam2));
+        scoreTeam2Field.setMaximumSize(scoreTeam2Field.getPreferredSize());
+    }
+
+    public void markQuestionAsCompleted(int x, int y){
+        JButton button = (JButton) tableOfCategoriesGrid.getComponent(numberOfCategories + (y * numberOfCategories + x));
+        button.setEnabled(false);
     }
 
     private JButton createButton(int x, int y, String score) {
