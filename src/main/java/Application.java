@@ -63,10 +63,8 @@ public class Application implements JeopardyUIListener {
         // TODO: score aktualisieren und layout der scores aktualisieren
         if (team == 1) {
             pointsTeam1 += jeopardyQuestion.getQuestionScore();
-            System.out.println("Punktestand Team 1: " + pointsTeam1);
         } else if (team == 2) {
             pointsTeam2 += jeopardyQuestion.getQuestionScore();
-            System.out.println("Punktestand Team 2: " + pointsTeam2);
         }
 
         jeopardyUI.updateScore(pointsTeam1, pointsTeam2);

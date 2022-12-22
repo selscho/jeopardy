@@ -50,12 +50,12 @@ public class JeopardyUI {
         tableOfCategoriesGrid.setLayout(new GridLayout(0, numberOfCategories));
         tableOfCategoriesPanel.add(tableOfCategoriesGrid);
 
-        tableOfCategoriesGrid.add(new JLabel("Category 1"));
-        tableOfCategoriesGrid.add(new JLabel("Category 2"));
-        tableOfCategoriesGrid.add(new JLabel("Category 3"));
-        tableOfCategoriesGrid.add(new JLabel("Category 4"));
-        tableOfCategoriesGrid.add(new JLabel("Category 5"));
-        tableOfCategoriesGrid.add(new JLabel("Category 6"));
+        tableOfCategoriesGrid.add(new JLabel("Category 1", SwingConstants.CENTER));
+        tableOfCategoriesGrid.add(new JLabel("Category 2", SwingConstants.CENTER));
+        tableOfCategoriesGrid.add(new JLabel("Category 3", SwingConstants.CENTER));
+        tableOfCategoriesGrid.add(new JLabel("Category 4", SwingConstants.CENTER));
+        tableOfCategoriesGrid.add(new JLabel("Category 5", SwingConstants.CENTER));
+        tableOfCategoriesGrid.add(new JLabel("Category 6", SwingConstants.CENTER));
 
         tableOfCategoriesGrid.add(createButton(0, 0, "200"));
         tableOfCategoriesGrid.add(createButton(1, 0, "200"));
@@ -130,13 +130,17 @@ public class JeopardyUI {
         // create team-buttons to be able to assign score
         JPanel teamButtonsPanel = new JPanel();
         teamButtonsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        // TODO: create a ButtonGroup object, so that only team1 or team2 can be selected
         var team1Button = new JRadioButton("Team 1");
         var team2Button = new JRadioButton("Team 2");
         teamButtonsPanel.setLayout(new BoxLayout(teamButtonsPanel, BoxLayout.X_AXIS));
         teamButtonsPanel.add(team1Button);
         teamButtonsPanel.add(team2Button);
         questionPanel.add(teamButtonsPanel);
+
+        // add buttonGroup, so that only team 1 OR team 2 can be selected
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(team1Button);
+        buttonGroup.add(team2Button);
 
         // create ready-button
         JPanel readyButtonPanel = new JPanel();
@@ -154,6 +158,7 @@ public class JeopardyUI {
                     team = 2;
                 }
                 jeopardyUIListener.onQuestionCompletedClicked(activeQuestion, team);
+                buttonGroup.clearSelection();
             }
         });
 

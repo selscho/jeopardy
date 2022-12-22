@@ -7,9 +7,7 @@
     <list default="true" id="88ef4142-4219-4866-aa5e-1c0b37b60dd7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/JeopardyQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JeopardyQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JeopardyUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JeopardyUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/JeopardyUIListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JeopardyUIListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
