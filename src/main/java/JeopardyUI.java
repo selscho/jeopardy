@@ -9,14 +9,10 @@ public class JeopardyUI {
     JPanel views = new JPanel(cardLayout);
     JPanel tableOfCategoriesPanel = new JPanel();
     JPanel questionPanel = new JPanel();
+    private JTextArea questionArea = new JTextArea("");
     final static String TABLE_OF_CATEGORIES = "table of categories";
     final static String QUESTION = "question";
 
-    //final static int question11Score = 200;
-    //final static int question21Score = 400;
-
-    //private int pointsTeam1 = 0;
-    //private int pointsTeam2 = 0;
     // TODO: methode, die scores rein schreibt und die JTextField-Groesse aktualisiert
     JTextField scoreTeam1Field = new JTextField();
     JTextField scoreTeam2Field = new JTextField();
@@ -120,14 +116,11 @@ public class JeopardyUI {
 
     // TODO: ohne Argument: Platzhalter einfügen
     private void createQuestionView(){
-        //JPanel questionPanel = new JPanel();
-
         questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
         // TODO: border nicht hardcodieren, sondern abhängig von der bildschirmauflösung machen
         questionPanel.setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100));
 
         // display question
-        JTextArea questionArea = new JTextArea("Hier steht dann eine Frage");
         questionArea.setLineWrap(true);
         questionPanel.add(questionArea);
 
@@ -154,30 +147,17 @@ public class JeopardyUI {
                 jeopardyUIListener.onQuestionCompletedClicked();
             }
         });
-//        readyButton.addActionListener(actionEvent -> {
-//            if (team1Button.isSelected()) {
-//                pointsTeam1 += jeopardyQuestion.getQuestionScore();
-//                scoreTeam1Field.setText(String.valueOf(pointsTeam1));
-//                scoreTeam1Field.setMaximumSize(scoreTeam1Field.getPreferredSize());
-//            }
-//            if (team2Button.isSelected()) {
-//                pointsTeam2 += jeopardyQuestion.getQuestionScore();
-//                scoreTeam2Field.setText(String.valueOf(pointsTeam2));
-//                scoreTeam2Field.setMaximumSize(scoreTeam2Field.getPreferredSize());
-//            }
-//            cardLayout.show(views, TABLE_OF_CATEGORIES);
-//        });
-        questionPanel.add(readyButtonPanel);
 
-        //frame.setVisible(true);
+        questionPanel.add(readyButtonPanel);
     }
 
     public void showOverview() {
         cardLayout.show(views, TABLE_OF_CATEGORIES);
     }
 
-    public void showQuestion() {
+    public void showQuestion(JeopardyQuestion jeopardyQuestion) {
         cardLayout.show(views, QUESTION);
+        questionArea.setText(jeopardyQuestion.getQuestion());
     }
 
     private JButton createButton(int x, int y, String score) {
