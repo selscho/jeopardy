@@ -10,18 +10,16 @@ public class JeopardyUI {
     JPanel tableOfCategoriesPanel = new JPanel();
     JPanel tableOfCategoriesGrid = new JPanel();
     int numberOfCategories = 6;
+    float fontSize = 25;
     JPanel questionPanel = new JPanel();
     private JTextArea questionArea = new JTextArea("");
     private JeopardyQuestion activeQuestion = new JeopardyQuestion("?", 0);
     //private JButton readyButton = new JButton("Fertig");
     final static String TABLE_OF_CATEGORIES = "table of categories";
     final static String QUESTION = "question";
-
-    // TODO: methode, die scores rein schreibt und die JTextField-Groesse aktualisiert
     JTextField scoreTeam1Field = new JTextField("0");
     JTextField scoreTeam2Field = new JTextField("0");
-//    JTextField scoreTeam1Field = new JTextField(String.valueOf(pointsTeam1));
-//    JTextField scoreTeam2Field = new JTextField(String.valueOf(pointsTeam2));
+    JRadioButton selectedButton = null;
 
     JeopardyUIListener jeopardyUIListener;
 
@@ -50,12 +48,18 @@ public class JeopardyUI {
         tableOfCategoriesGrid.setLayout(new GridLayout(0, numberOfCategories));
         tableOfCategoriesPanel.add(tableOfCategoriesGrid);
 
-        tableOfCategoriesGrid.add(new JLabel("Category 1", SwingConstants.CENTER));
-        tableOfCategoriesGrid.add(new JLabel("Category 2", SwingConstants.CENTER));
-        tableOfCategoriesGrid.add(new JLabel("Category 3", SwingConstants.CENTER));
-        tableOfCategoriesGrid.add(new JLabel("Category 4", SwingConstants.CENTER));
-        tableOfCategoriesGrid.add(new JLabel("Category 5", SwingConstants.CENTER));
-        tableOfCategoriesGrid.add(new JLabel("Category 6", SwingConstants.CENTER));
+        for (int c=1; c < 7; c++) {
+            var label = new JLabel("Category " + c, SwingConstants.CENTER);
+            label.setFont(label.getFont().deriveFont(fontSize));
+            tableOfCategoriesGrid.add(label);
+        }
+
+//        tableOfCategoriesGrid.add(new JLabel("Category 1", SwingConstants.CENTER));
+//        tableOfCategoriesGrid.add(new JLabel("Category 2", SwingConstants.CENTER));
+//        tableOfCategoriesGrid.add(new JLabel("Category 3", SwingConstants.CENTER));
+//        tableOfCategoriesGrid.add(new JLabel("Category 4", SwingConstants.CENTER));
+//        tableOfCategoriesGrid.add(new JLabel("Category 5", SwingConstants.CENTER));
+//        tableOfCategoriesGrid.add(new JLabel("Category 6", SwingConstants.CENTER));
 
         tableOfCategoriesGrid.add(createButton(0, 0, "200"));
         tableOfCategoriesGrid.add(createButton(1, 0, "200"));
@@ -95,20 +99,25 @@ public class JeopardyUI {
         // create score bar
         JPanel scoreBarPanel = new JPanel();
         scoreBarPanel.setLayout(new BoxLayout(scoreBarPanel, BoxLayout.X_AXIS));
+        //scoreBarPanel.setPreferredSize(new Dimension(200, 1080/14));
 
         var team1 = new JTextField("Team 1:");
+        team1.setFont(team1.getFont().deriveFont(fontSize));
         team1.setMaximumSize(team1.getPreferredSize());
         scoreBarPanel.add(team1);
 
         //var pointsTeam1Field = new JTextField(String.valueOf(pointsTeam1));
+        scoreTeam1Field.setFont(scoreTeam1Field.getFont().deriveFont(fontSize));
         scoreTeam1Field.setMaximumSize(scoreTeam1Field.getPreferredSize());
         scoreBarPanel.add(scoreTeam1Field);
 
         var team2 = new JTextField("Team 2:");
+        team2.setFont(team2.getFont().deriveFont(fontSize));
         team2.setMaximumSize(team2.getPreferredSize());
         scoreBarPanel.add(team2);
 
         //var pointsTeam2Field = new JTextField(String.valueOf(pointsTeam2));
+        scoreTeam2Field.setFont(scoreTeam2Field.getFont().deriveFont(fontSize));
         scoreTeam2Field.setMaximumSize(scoreTeam2Field.getPreferredSize());
         scoreBarPanel.add(scoreTeam2Field);
 
@@ -130,23 +139,52 @@ public class JeopardyUI {
         // create team-buttons to be able to assign score
         JPanel teamButtonsPanel = new JPanel();
         teamButtonsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // add buttonGroup, so that only team 1 OR team 2 can be selected
+        ButtonGroup buttonGroup = new ButtonGroup();
+
         var team1Button = new JRadioButton("Team 1");
+        team1Button.setFont(team1Button.getFont().deriveFont(fontSize));
+        buttonGroup.add(team1Button);
+        team1Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (selectedButton == team1Button) {
+                    buttonGroup.clearSelection();
+                    selectedButton = null;
+                } else {
+                    selectedButton = team1Button;
+                }
+            }
+        });
+
         var team2Button = new JRadioButton("Team 2");
+        team2Button.setFont(team2Button.getFont().deriveFont(fontSize));
+        buttonGroup.add(team2Button);
+        team2Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (selectedButton == team2Button) {
+                    buttonGroup.clearSelection();
+                    selectedButton = null;
+                } else {
+                    selectedButton = team2Button;
+                }
+            }
+        });
+
         teamButtonsPanel.setLayout(new BoxLayout(teamButtonsPanel, BoxLayout.X_AXIS));
         teamButtonsPanel.add(team1Button);
         teamButtonsPanel.add(team2Button);
         questionPanel.add(teamButtonsPanel);
 
-        // add buttonGroup, so that only team 1 OR team 2 can be selected
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(team1Button);
-        buttonGroup.add(team2Button);
 
         // create ready-button
         JPanel readyButtonPanel = new JPanel();
         readyButtonPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
         readyButtonPanel.setLayout(new BoxLayout(readyButtonPanel, BoxLayout.X_AXIS));
         JButton readyButton = new JButton("Fertig");
+        readyButton.setFont(readyButton.getFont().deriveFont(fontSize));
         readyButtonPanel.add(readyButton);
         readyButton.addActionListener(new ActionListener() {
             @Override
@@ -190,6 +228,7 @@ public class JeopardyUI {
 
     private JButton createButton(int x, int y, String score) {
         JButton button = new JButton(score);
+        button.setFont(button.getFont().deriveFont(fontSize));
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
