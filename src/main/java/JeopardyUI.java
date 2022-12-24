@@ -12,7 +12,8 @@ public class JeopardyUI {
     int numberOfCategories = 6;
     float fontSize = 25;
     JPanel questionPanel = new JPanel();
-    private JTextArea questionArea = new JTextArea("");
+    //private JTextArea questionArea = new JTextArea("");
+    private JLabel questionArea = new JLabel("", SwingConstants.CENTER);
     private JeopardyQuestion activeQuestion = new JeopardyQuestion("?", 0);
     //private JButton readyButton = new JButton("Fertig");
     final static String TABLE_OF_CATEGORIES = "table of categories";
@@ -53,13 +54,6 @@ public class JeopardyUI {
             label.setFont(label.getFont().deriveFont(fontSize));
             tableOfCategoriesGrid.add(label);
         }
-
-//        tableOfCategoriesGrid.add(new JLabel("Category 1", SwingConstants.CENTER));
-//        tableOfCategoriesGrid.add(new JLabel("Category 2", SwingConstants.CENTER));
-//        tableOfCategoriesGrid.add(new JLabel("Category 3", SwingConstants.CENTER));
-//        tableOfCategoriesGrid.add(new JLabel("Category 4", SwingConstants.CENTER));
-//        tableOfCategoriesGrid.add(new JLabel("Category 5", SwingConstants.CENTER));
-//        tableOfCategoriesGrid.add(new JLabel("Category 6", SwingConstants.CENTER));
 
         tableOfCategoriesGrid.add(createButton(0, 0, "200"));
         tableOfCategoriesGrid.add(createButton(1, 0, "200"));
@@ -133,7 +127,10 @@ public class JeopardyUI {
         questionPanel.setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100));
 
         // display question
-        questionArea.setLineWrap(true);
+        //questionArea.setLineWrap(true);
+        questionArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        questionArea.setPreferredSize(new Dimension(800, 600));
+        questionArea.setFont(questionArea.getFont().deriveFont(fontSize));
         questionPanel.add(questionArea);
 
         // create team-buttons to be able to assign score
