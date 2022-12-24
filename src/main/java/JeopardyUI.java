@@ -40,6 +40,12 @@ public class JeopardyUI {
         frame.setVisible(true);
     }
 
+    private void addCategoryLabel(String name) {
+        var label = new JLabel(name, SwingConstants.CENTER);
+        label.setFont(label.getFont().deriveFont(fontSize));
+        tableOfCategoriesGrid.add(label);
+    }
+
     private void createOverview(){
         //JPanel tableOfCategoriesPanel = new JPanel();
         tableOfCategoriesPanel.setLayout(new BoxLayout(tableOfCategoriesPanel, BoxLayout.Y_AXIS));
@@ -49,11 +55,12 @@ public class JeopardyUI {
         tableOfCategoriesGrid.setLayout(new GridLayout(0, numberOfCategories));
         tableOfCategoriesPanel.add(tableOfCategoriesGrid);
 
-        for (int c=1; c < 7; c++) {
-            var label = new JLabel("Category " + c, SwingConstants.CENTER);
-            label.setFont(label.getFont().deriveFont(fontSize));
-            tableOfCategoriesGrid.add(label);
-        }
+        addCategoryLabel("Buchloe");
+        addCategoryLabel("Bayern");
+        addCategoryLabel("Logik");
+        addCategoryLabel("Pop");
+        addCategoryLabel("Unnütz");
+        addCategoryLabel("Geografie");
 
         tableOfCategoriesGrid.add(createButton(0, 0, "200"));
         tableOfCategoriesGrid.add(createButton(1, 0, "200"));
