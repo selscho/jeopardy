@@ -3,12 +3,21 @@ import java.awt.event.ActionListener;
 
 public class Application implements JeopardyUIListener {
     JeopardyUI jeopardyUI = new JeopardyUI(this);
+    String[] listOfCategories = new String[6];
     JeopardyQuestion[][] listOfQuestions = new JeopardyQuestion[6][5];
 
     private int pointsTeam1 = 0;
     private int pointsTeam2 = 0;
 
     public Application(){
+        // initialise array of categories
+        listOfCategories[0] = "Category 1";
+        listOfCategories[1] = "Category 2";
+        listOfCategories[2] = "Category 3";
+        listOfCategories[3] = "Category 4";
+        listOfCategories[4] = "Category 5";
+        listOfCategories[5] = "Category 6";
+
         // initialise array of questions
         listOfQuestions[0][0] = new JeopardyQuestion("Question Category 1, score 200.", 200);
         listOfQuestions[1][0] = new JeopardyQuestion("Question Category 2, score 200.", 200);
@@ -54,6 +63,7 @@ public class Application implements JeopardyUIListener {
 
     @Override
     public void onOverviewButtonClicked(int x, int y) {
+        jeopardyUI.setQuestionTitle(listOfQuestions[x][y].getQuestionScore(), listOfCategories[x]);
         jeopardyUI.showQuestion(listOfQuestions[x][y]);
         jeopardyUI.markQuestionAsCompleted(x, y);
     }

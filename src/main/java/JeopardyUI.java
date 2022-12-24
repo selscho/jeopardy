@@ -12,6 +12,7 @@ public class JeopardyUI {
     int numberOfCategories = 6;
     float fontSize = 25;
     JPanel questionPanel = new JPanel();
+    JLabel questionTitle = new JLabel();
     //private JTextArea questionArea = new JTextArea("");
     private JLabel questionArea = new JLabel("", SwingConstants.CENTER);
     private JeopardyQuestion activeQuestion = new JeopardyQuestion("?", 0);
@@ -21,7 +22,6 @@ public class JeopardyUI {
     JTextField scoreTeam1Field = new JTextField("0");
     JTextField scoreTeam2Field = new JTextField("0");
     JRadioButton selectedButton = null;
-
     JeopardyUIListener jeopardyUIListener;
 
     JeopardyUI(JeopardyUIListener jeopardyUIListener){
@@ -126,11 +126,16 @@ public class JeopardyUI {
         // TODO: border nicht hardcodieren, sondern abhängig von der bildschirmauflösung machen
         questionPanel.setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100));
 
+        // title bar
+        questionTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        questionTitle.setFont(questionTitle.getFont().deriveFont((float) 20));
+        questionPanel.add(questionTitle);
+
         // display question
         //questionArea.setLineWrap(true);
         questionArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         questionArea.setPreferredSize(new Dimension(800, 600));
-        questionArea.setFont(questionArea.getFont().deriveFont(fontSize));
+        questionArea.setFont(questionArea.getFont().deriveFont(28.0f));
         questionPanel.add(questionArea);
 
         // create team-buttons to be able to assign score
@@ -208,6 +213,10 @@ public class JeopardyUI {
         cardLayout.show(views, QUESTION);
         questionArea.setText(jeopardyQuestion.getQuestion());
         activeQuestion = jeopardyQuestion;
+    }
+
+    public void setQuestionTitle(int score, String category){
+        questionTitle.setText(category + " - " + score);
     }
 
     public void updateScore(int scoreTeam1, int scoreTeam2){
