@@ -13,10 +13,8 @@ public class JeopardyUI {
     float fontSize = 25;
     JPanel questionPanel = new JPanel();
     JLabel questionTitle = new JLabel();
-    //private JTextArea questionArea = new JTextArea("");
     private JLabel questionArea = new JLabel("", SwingConstants.CENTER);
     private JeopardyQuestion activeQuestion = new JeopardyQuestion("?", 0);
-    //private JButton readyButton = new JButton("Fertig");
     final static String TABLE_OF_CATEGORIES = "table of categories";
     final static String QUESTION = "question";
     JTextField scoreTeam1Field = new JTextField("0");
@@ -26,7 +24,6 @@ public class JeopardyUI {
 
     JeopardyUI(JeopardyUIListener jeopardyUIListener){
         this.jeopardyUIListener = jeopardyUIListener;
-        //JFrame frame = new JFrame();
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -47,11 +44,9 @@ public class JeopardyUI {
     }
 
     private void createOverview(){
-        //JPanel tableOfCategoriesPanel = new JPanel();
         tableOfCategoriesPanel.setLayout(new BoxLayout(tableOfCategoriesPanel, BoxLayout.Y_AXIS));
 
         // create grid with categories and question-scores
-        //JPanel tableOfCategoriesGrid = new JPanel();
         tableOfCategoriesGrid.setLayout(new GridLayout(0, numberOfCategories));
         tableOfCategoriesPanel.add(tableOfCategoriesGrid);
 
@@ -100,14 +95,12 @@ public class JeopardyUI {
         // create score bar
         JPanel scoreBarPanel = new JPanel();
         scoreBarPanel.setLayout(new BoxLayout(scoreBarPanel, BoxLayout.X_AXIS));
-        //scoreBarPanel.setPreferredSize(new Dimension(200, 1080/14));
 
         var team1 = new JTextField("Team 1:");
         team1.setFont(team1.getFont().deriveFont(fontSize));
         team1.setMaximumSize(team1.getPreferredSize());
         scoreBarPanel.add(team1);
 
-        //var pointsTeam1Field = new JTextField(String.valueOf(pointsTeam1));
         scoreTeam1Field.setFont(scoreTeam1Field.getFont().deriveFont(fontSize));
         scoreTeam1Field.setMaximumSize(scoreTeam1Field.getPreferredSize());
         scoreBarPanel.add(scoreTeam1Field);
@@ -117,20 +110,16 @@ public class JeopardyUI {
         team2.setMaximumSize(team2.getPreferredSize());
         scoreBarPanel.add(team2);
 
-        //var pointsTeam2Field = new JTextField(String.valueOf(pointsTeam2));
         scoreTeam2Field.setFont(scoreTeam2Field.getFont().deriveFont(fontSize));
         scoreTeam2Field.setMaximumSize(scoreTeam2Field.getPreferredSize());
         scoreBarPanel.add(scoreTeam2Field);
 
         tableOfCategoriesPanel.add(scoreBarPanel);
-
-        //frame.setVisible(true);
     }
 
-    // TODO: ohne Argument: Platzhalter einfügen
     private void createQuestionView(){
         questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
-        // TODO: border nicht hardcodieren, sondern abhängig von der bildschirmauflösung machen
+        // TODO: create border depending on screen size
         questionPanel.setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100));
 
         // title bar
@@ -139,7 +128,6 @@ public class JeopardyUI {
         questionPanel.add(questionTitle);
 
         // display question
-        //questionArea.setLineWrap(true);
         questionArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         questionArea.setPreferredSize(new Dimension(800, 600));
         questionArea.setFont(questionArea.getFont().deriveFont(28.0f));

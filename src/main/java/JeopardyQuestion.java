@@ -8,7 +8,6 @@ public class JeopardyQuestion {
     }
 
     public String getQuestion() {
-        //return question;
         return ("<html><body>"+question+"</body></html>");
     }
 
@@ -16,7 +15,4 @@ public class JeopardyQuestion {
         return questionScore;
     }
 
-//    public void setQuestionScore(int score) {
-//        this.questionScore = score;
-//    }
 }

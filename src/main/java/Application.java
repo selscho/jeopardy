@@ -11,12 +11,12 @@ public class Application implements JeopardyUIListener {
 
     public Application(){
         // initialise array of categories
-        listOfCategories[0] = "Category 1";
-        listOfCategories[1] = "Category 2";
-        listOfCategories[2] = "Category 3";
-        listOfCategories[3] = "Category 4";
-        listOfCategories[4] = "Category 5";
-        listOfCategories[5] = "Category 6";
+        listOfCategories[0] = "Buchloe";
+        listOfCategories[1] = "Bayern";
+        listOfCategories[2] = "Logik";
+        listOfCategories[3] = "Pop";
+        listOfCategories[4] = "Unnütz";
+        listOfCategories[5] = "Geographie";
 
         // initialise array of questions
         listOfQuestions[0][0] = new JeopardyQuestion("Wie lautet der Name des Bürgermeisters von Buchloe?", 200);
@@ -70,7 +70,7 @@ public class Application implements JeopardyUIListener {
 
     @Override
     public void onQuestionCompletedClicked(JeopardyQuestion jeopardyQuestion, int team) {
-        // TODO: score aktualisieren und layout der scores aktualisieren
+        // TODO: update score and layout
         if (team == 1) {
             pointsTeam1 += jeopardyQuestion.getQuestionScore();
         } else if (team == 2) {
