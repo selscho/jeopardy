@@ -50,12 +50,12 @@ public class JeopardyUI {
         tableOfCategoriesGrid.setLayout(new GridLayout(0, numberOfCategories));
         tableOfCategoriesPanel.add(tableOfCategoriesGrid);
 
-        addCategoryLabel("Buchloe");
-        addCategoryLabel("Bayern");
-        addCategoryLabel("Logik");
-        addCategoryLabel("Pop");
-        addCategoryLabel("Unnütz");
-        addCategoryLabel("Geografie");
+        addCategoryLabel(Constants.CATEGORY_1);
+        addCategoryLabel(Constants.CATEGORY_2);
+        addCategoryLabel(Constants.CATEGORY_3);
+        addCategoryLabel(Constants.CATEGORY_4);
+        addCategoryLabel(Constants.CATEGORY_5);
+        addCategoryLabel(Constants.CATEGORY_6);
 
         tableOfCategoriesGrid.add(createButton(0, 0, "200"));
         tableOfCategoriesGrid.add(createButton(1, 0, "200"));

@@ -1,6 +1,3 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class Application implements JeopardyUIListener {
     JeopardyUI jeopardyUI = new JeopardyUI(this);
     String[] listOfCategories = new String[6];
@@ -11,12 +8,12 @@ public class Application implements JeopardyUIListener {
 
     public Application(){
         // initialise array of categories
-        listOfCategories[0] = "Buchloe";
-        listOfCategories[1] = "Bayern";
-        listOfCategories[2] = "Logik";
-        listOfCategories[3] = "Pop";
-        listOfCategories[4] = "Unnütz";
-        listOfCategories[5] = "Geographie";
+        listOfCategories[0] = Constants.CATEGORY_1;
+        listOfCategories[1] = Constants.CATEGORY_2;
+        listOfCategories[2] = Constants.CATEGORY_3;
+        listOfCategories[3] = Constants.CATEGORY_4;
+        listOfCategories[4] = Constants.CATEGORY_5;
+        listOfCategories[5] = Constants.CATEGORY_6;
 
         // initialise array of questions
         listOfQuestions[0][0] = new JeopardyQuestion("Wie lautet der Name des Bürgermeisters von Buchloe?", 200);
